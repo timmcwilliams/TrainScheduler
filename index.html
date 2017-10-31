@@ -18,17 +18,11 @@
 </head>
 
 <body>
-	<h2>Moment Date</h2>
-<!-- container for Moment.js output -->
-<div id="displayMoment"></div>
 
-<h2>JavaScript Date</h2>
-<!-- container for JavaScript Date output -->
-<div id="displayJsDate"></div>
 
 <div class="jumbotron">
 		<h1 class="text-center">Welcome to Todays Train Schedule 2</h1>
-		<h3 class="text-center">"We are ALWAYS ON TIME"</h3>
+		<h3 class="text-center">We are ALWAYS ON TIME</h3>
 	</div>
 	<div class="row">
 		<!-- Sign-Up Panel-->
@@ -38,6 +32,7 @@
 					<h3 class="panel-title"Train Schedule"</h3>
 				</div>
 				<div class="panel-body">
+          <div id="currentT-input"><!--  class="clock">loading ... --></div>
 					<!-- Sign-up Form (note the various input "types")-->
 					<form role="form">
 						<div class="form-group">
@@ -64,6 +59,10 @@
 							<label for="depart-input">Departs:</label>
 							<input class="form-control" id="depart-input" type="text">
 						</div>	
+             <!--  <div class="form-group">
+              <label for="currentT-input">Current Time:</label>
+              <input class="form-control" id="currentT-input" type="text">
+            </div>   -->
 						<div class="form-group">
 							<label for="arrive-input">Arrives:</label>
 							<input class="form-control" id="arrive-input" type="text">
@@ -75,10 +74,9 @@
 						<button class="btn btn-default" id="add-entry" type="submit">Submit</button>
 					</form>
 				</div>
-			</div>
-		</div>
-	</div>
-
+	     </div>
+    </div>
+  </div>
 <div class="container">
   <h2>Tim Table</h2>
   <p>You Have No Control of What Happens Here</p>                                                                                      
@@ -92,22 +90,22 @@
         <th>Frequency (Min)</th>
         <th>Current Time(Min)</th>
         <th>Start Time</th>
-        <th>Time</th>
-        <th>Time Until Arrive</th>
+        <th>Arrive Time</th>
+        <th>Time Left</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-      	<td id="train-input"></td>
-        <td id="origin-input"></td>
-        <td id="destination-input"></td>
-        <td id="freq-input"></td>
-        <td id="currentT-input"></td>	 
-        <td id="start-time"></td>
-        <td id="Arrival=time"></td>
-        <td od="time-left"></td>
-       </tr>
-    </tbody>
+      <tbody>
+        <tr>
+        	<td id="train-input"></td>
+          <td id="origin-input"></td>
+          <td id="destination-input"></td>
+          <td id="freq-input"></td>
+          <td id="currentT-input"></td>	 
+          <td id="start-time"></td>
+          <td id="Arrival=time"></td>
+          <td od="time-left"></td>
+         </tr>
+      </tbody>
   </table>
   </div>
 </div>
@@ -140,35 +138,34 @@
 		// var ttt = new moment ().format("HH:mm");
 		// $("#currentT-input").text(ttt);
 
-			// $('#clock').fitText(1.3);
-
-function update(ttt) {
-  $('#currentT-input').html(moment().format('H:mm:ss'));
+			// $('#currentT-input').fitText(1.3);
+      function update() {
+  $("#currentT-input").html(moment().format("H:mm:ss"));
 }
-
 setInterval(update, 1000);
-
 
 
 			$("#add-entry").on("click", function(event){
 
 				event.preventDefault();
-
+// var currentT=$("#currentT-input").val().trim();
 
 				// var timenow = $(time);
-				var trainNum = $("#train-input").val().trim();
-				var routeTime = $("#routeTime-input").val().trim();
+				var trainNum =    $("#train-input").val().trim();
+				var routeTime =   $("#routeTime-input").val().trim();
 				var destination = $("#destination-input").val().trim();
-				var origin = $("#origin-input").val().trim();
-				var freq = $("#freq-input").val().trim();
-				var departs = $("#depart-input").val().trim();
-				var arrive = $("#arrive-input").val().trim();
-				var tarrive = $("#toarrive-input").val().trim();
-				var startT=1000;
+				var origin =      $("#origin-input").val().trim();
+				var freq =        $("#freq-input").val().trim();
+				var departs =     $("#depart-input").val().trim();
+				var arrive =      $("#arrive-input").val().trim();
+				var tarrive =     $("#toarrive-input").val().trim();
+				var currentT =    $("#currentT-input").val().trim();
+        var startT=1000;
+        var routeTime=200;
 				var arriveT=startT+routeTime;
-				var currentT= ttt;
+        var ttt=currentT;
 				var remainT=(currentT-arriveT)*-1;
-
+        
 				
 				console.log(trainNum,routeTime,destination,origin,freq,departs,tarrive,startT,arriveT,currentT,remainT,ttt);
 // post to form
@@ -178,7 +175,7 @@ setInterval(update, 1000);
       	$(".table #destination-input").append($("<td>").text(destination));
       	$(".table #freq-input").append($("<td>").text(freq));
       	$(".table currentT-input").append($("<td>").text(currentT));
-      	$(".table starttime").append($("<td>").text(startT));
+      	$(".table #start-time").append($("<td>").text(startT));
       	$(".table #arrive-input").append($("<td>").text(arrive));
       	$(".table #toarrive-input").append($("<td>").text(tarrive));
       	$(".table #toarrive-input").append($("<td>").text(tarrive));

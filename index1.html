@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Train Scheduler</title>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="assets/javascript/moment.js"></script>
+  <script>
+    moment().format();
+  </script>
+  <!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+   <link rel="stylesheet" type="text/css" href="assets/css/train.css">
+  <script type="text/javascript"></script>
+
+
+
+</head>
+
+<body>
+  <div class="jumbotron">
+    <h1 class="text-center">Welcome to Todays Train Schedule 2</h1>
+    <h3 class="text-center">We are ALWAYS ON TIME</h3>
+  </div><!-- end of jtron -->
+
+
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Train Schedule</h3>
+        </div>
+        <form>
+          <div>
+              <div class="form-group">
+              <label >Train Name:</label>
+              <input id="train-name" type="text">
+            </div>  
+            <div>
+              <div class="form-group">
+              <label >Destination</label>
+              <input id="destination" type="text">
+            </div> 
+             <div>
+              <div class="form-group">
+              <label >first train time:</label>
+              <input id="first-time" type="text">
+            </div>
+            <div>
+              <div class="form-group">
+              <label >frequecy</label>
+              <input id="frequency" type="number">
+            </div>  
+          <button class="btn btn-default" id="add-entry" type="submit">Submit</button>
+        </form>
+      </div>
+    </div> 
+  </div>
+  </div>
+  <div class="container">
+    <h2>Time Table</h2>
+    <p>You Have No Control of What Happens Here</p>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Origin</th>
+            <th>Destination(Min)</th>
+            <th> Route Time(Min)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="origin-input"></td>
+            <td id="destnation-input"></td>
+            <td id="routeTime-input"></td>
+            <td id="currentT-input"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+<span id="displayed-data"></span>
+  </div>
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+ 
+ 
+<script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+ <script type="text/javascript" src="assets/javascript/getitdone2.js"></script>
+        
+       
+       
+       <!--  // var remainT=(currentT-arriveT)*-1;
+        // console.log(currentT);
+/
+  
+
+  
+  </body>
+  </html>
