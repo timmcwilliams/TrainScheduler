@@ -29,6 +29,20 @@ while(nextTrainArrival < moment())  // moment() is the curren date/time
                 var mintoarrive = nextTrainArrival.diff(moment(),"minutes"); var tarrive ="";   
 // post to form
 $('#train-input').append('<tr><td class="table">'+trainNum+'</td></tr>');
+
+var date = "2017-03-13";
+var time = "18:00";
+
+var timeAndDate = moment(date+' '+time);
+
+console.log(timeAndDate);
+// When will the next world cup be?
+console.log( moment('June 12th, 2014','MMM DD YYYY').fromNow() ); // in 2 years
+
+
+
+
+
 //         $(".table #train-input").appendchild($("<td>").text(trainNum));
 
 // //         .on("child_added", function(data) { 

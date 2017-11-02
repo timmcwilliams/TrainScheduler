@@ -7,14 +7,14 @@
 </script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="assets/javascript/moment.js"></script>
-  <script>
 
-      moment().format();
-    </script>
 
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<link rel="stylesheet" type="text/css" href="assets/css/train.css"> 
+<!-- <link rel="stylesheet" type="text/css" href="assets/css/train.css"> -->
+
+<!-- Moment.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script> 
 </head>
 
 <body>
@@ -39,10 +39,10 @@
            <input class="form-control" id="train-input" type="text">
          </div>
        
-         <div class="form-group">
+        <!--  <div class="form-group">
            <label for="origin-input">Origin:</label>
            <input class="form-control" id="origin-input" type="text">
-         </div>	
+         </div>	 -->
          <div class="form-group">
            <label for="destination-input">Destination:</label>
            <input class="form-control" id="destination-input" type="Text">
@@ -53,7 +53,7 @@
          </div>	
          <div class="form-group">
            <label for="depart-input">Depart Time:</label>
-           <input class="form-control" id="depart-input" type="text">
+           <input class="form-control" id="depart-input" type="time">
          </div>					
        <button class="btn btn-default" id="add-entry" type="submit">Submit</button>
      </form>
@@ -69,27 +69,15 @@
   <table class="table">
     <thead>
       <tr>
-        <th>Train Number</th>
-        <th>Departs From</th>
+        <th>Train Name</th>
         <th>Destination To</th>
         <th>Frequency (Min)</th>
-        <th>Current Time(Min)</th>
-        <th>Start Time</th>
-        <th>Arrive Time</th>
-        <th>Time Left</th>
+        <th>Next Arrival</th>
+        <th>Minutes Away</th>
       </tr>
     </thead>
-      <tbody>
-        <tr>
-        	<td id="train-input"></td>
-          <td id="origin-input"></td>
-          <td id="destination-input"></td>
-          <td id="freq-input"></td>
-          <td id="currentT-input"></td>	 
-          <td id="startT"></td>
-          <td id="Arrival Time"></td>
-          <td id="time-left"></td>
-         </tr>
+      <tbody id="table-body">
+        
       </tbody>
   </table>
   </div>
@@ -98,7 +86,9 @@
 
 
 		<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
-    <script type="text/javascript" src="assets/javascript/getitdone3.js"></script>
-		<!-- <script src="/js/moment.min.js"></script> -->
+    <script type="text/javascript" src="assets/javascript/latest.js"></script>
+		
 <!-- <script> -->
 	<body>
+
+</html>    
