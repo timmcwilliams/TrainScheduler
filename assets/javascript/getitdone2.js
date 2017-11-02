@@ -21,40 +21,49 @@ function update() {
 }
 setInterval(update, 1000);
 
-// this is a console log of moment
-var currentTime = moment();
-
-console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm:ss"));
-
 // add entries
 $("#add-entry").on("click", function(event){
   event.preventDefault();
+  var firstTime = "3:15";
+  console.log(firstTime);
   
   // some variables
+ var firstTimeConverted = moment(firstTime, "hh:mm").subtract(1, "years");
+    console.log(firstTimeConverted);
+
+
+  var currentTime = moment();
+    console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm")); 
   var trainName = $("#train-name").val().trim();
   var destination = $("#destination").val().trim();
-  var firstTime = $("#first-time").val().trim();  
-  var freq = $("#frequency").val().trim();
-  var stringTime = moment().format("YYYY-MM-DD"); // get me todays date as a string
+
+  var firstTime = "3:00";/*$("#first-time").val().trim();*/
+  console.log("first time" + firstTime);  /*will be a string input*/
+  var freq = $("#frequency").val().trim(); /*will be a string input*/
+  var stringTime = moment().format("YYYY-MM-DD");
+  console.log("striing time" + stringTime); // get me todays date as a string
   var firstTimeMoment = stringTime + "T" + firstTime;  
-  var timeExpected=("timeexpected");
-  var firstTimeConverted = ("");
+  /*var firstTimeConverted = 100;*//*moment(firstTime, "hh:mm").subtract(1, "years");
+    console.log("first time converted" + firstTimeConverted);*/
+  var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+    console.log("DIFFERENCE IN TIME: " + diffTime);
 
   var newTrain = {
 
     trainName: trainName,
     destination: destination,
-    firstTime: firstTimeMoment,
+    firstTime: firstTime,
     freq: freq,
-    timeExpected:timeExpected,
-    firstTimeConverted:firstTimeConverted
+    stringTime:stringTime,
+    firstTimeMoment:firstTimeMoment,
+    firstTimeConverted: firstTimeConverted
+      };
 
-  };
+  
 
 // what I want to do here 
-// get variables in and out of the firebase
-// enter a time now and frequency - that would be 
-// so use frequency like every 30 min and min from now. 
+// /push variables in and out of the firebase
+
 // use difference (diff)
 // input trainName
 // example Houston To Austin
@@ -104,14 +113,12 @@ database.ref().on("value", function(snapshot){
     // THIS LOOPS
     for(var key in wholeDatabase)
     {
-      console.log(key);
+      // console.log(key);
       var trainObj = wholeDatabase[key];
      // console.log(key.val().freq);
-     console.log(trainObj.freq);
+       
       //NOW YOU CAN DO SOMETHING WITH EACH TRAIN OBJECTs Data
-      $("#displayed-data").text(trainObj.trainName + " | " + trainObj.destination + " | " + trainObj.firstTime + " | " + trainObj.freq + "| " + trainObj.timeExpected);
- // var firstTimeConverted = moment(firstTime, "hh:mm").subtract(1, "years");
- //    console.log(firstTimeConverted);
+      $("#displayed-data").text("  train name:  " + trainObj.trainName + " Train Dest: " + trainObj.destination + " First Time: " + trainObj.firstTime + " Freq:  " + trainObj.freq + " Time Expected: " +trainObj.timeExpected + "  1st time moment:  " + trainObj.firstTimeMoment+    "  Stringtime: " + trainObj.stringTime   + /*"  diffTime: " + trainObj.diffTime  +   */ "  firstTimeConverted: " + trainObj.firstTimeConverted);
     }
   }
 });
